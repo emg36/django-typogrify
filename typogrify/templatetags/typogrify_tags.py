@@ -9,7 +9,7 @@ from num2words import num2words
 
 from django import template
 from django.conf import settings
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext, ngettext, get_language
@@ -488,7 +488,7 @@ def typogrify(text):
     >>> conditional_escape(typogrify('<h2>"Jayhawks" & KU fans act extremely obnoxiously</h2>'))
     u'<h2><span class="dquo">&#8220;</span>Jayhawks&#8221; <span class="amp">&amp;</span> <span class="caps">KU</span> fans act extremely&nbsp;obnoxiously</h2>'
     """
-    text = force_text(text)
+    text = force_str(text)
     text = amp(text)
     text = widont(text)
     text = smartypants(text)
